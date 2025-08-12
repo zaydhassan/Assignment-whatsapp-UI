@@ -26,3 +26,10 @@ Deployed on **Render** for both frontend and backend.
 - python-dotenv
 
 ---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the Repository
+
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
