@@ -31,6 +31,47 @@ Deployed on **Render** for both frontend and backend.
 
 ### 1️⃣ Clone the Repository
 
-git clone https://github.com/your-username/your-repo.git
+git clone <repo-url>
 
 cd your-repo
+
+---
+
+### 2️⃣ Backend Setup
+
+cd backend
+
+python -m venv venv
+
+pip install -r requirements.txt
+
+
+**Environment Variables (`backend/.env`):**
+
+MONGO_URI=your_mongo_connection_string
+
+
+**Run locally:**
+
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+---
+
+### 3️⃣ Frontend Setup
+
+cd frontend
+
+npm install
+
+
+**Environment Variables (`frontend/.env.local`):**
+
+NEXT_PUBLIC_API_URL=http://localhost:8000
+
+> In production, this will be set to your backend’s Render URL.
+
+**Run locally:**
+
+npm run dev
+
+
