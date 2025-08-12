@@ -1,7 +1,8 @@
 import { Message, Conversation } from "@/types";
 import { useEffect, useRef } from "react";
+import React from "react";
 
-const STATUS_ICONS: Record<string, JSX.Element> = {
+const STATUS_ICONS: Record<string, React.ReactElement> = {
   sent: <span>✓</span>,
   delivered: <span>✓✓</span>,
   read: <span className="text-blue-500">✓✓</span>,
