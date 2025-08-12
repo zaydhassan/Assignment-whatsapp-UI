@@ -6,21 +6,18 @@ from bson import ObjectId
 import os
 from dotenv import load_dotenv
 
-# Load env vars
 load_dotenv()
 
-# FastAPI app
-app = FastAPI(title="AI Content Planner API")
+app = FastAPI(title="Whatsapp API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "https://assignment-whatsapp-ui-s3es.vercel.app/"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# MongoDB Connection
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
 db = client["whatsapp"]
@@ -58,4 +55,5 @@ def send_message(message: dict):
     message["timestamp"] = datetime.utcnow().isoformat()
     res = messages_col.insert_one(message)
     message["_id"] = str(res.inserted_id)
+
     return message
