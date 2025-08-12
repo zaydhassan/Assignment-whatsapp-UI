@@ -13,16 +13,14 @@ app = FastAPI(title="Whatsapp web clone")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "https://assignment-whatsapp-ui-s3es.vercel.app", 
-        "https://assignment-whatsapp-ui-8zac.vercel.app", 
+        "http://localhost:3000",  
+        "https://assignment-whatsapp-frontend.onrender.com",  
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# MongoDB connection
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
 db = client["whatsapp"]
@@ -52,7 +50,7 @@ def get_conversations():
 def get_messages(wa_id: str):
     docs = list(messages_col.find({"wa_id": wa_id}).sort("timestamp", 1))
     for doc in docs:
-        doc["_id"] = str(doc["_id"])  
+        doc["_id"] = str(doc["_id"])
     return docs
 
 @app.post("/messages")
