@@ -7,7 +7,7 @@ import ChatWindow from "../components/ChatWindow";
 import MessageInput from "../components/MessageInput";
 import { Conversation, Message } from "@/types";
 
-const API = "http://localhost:8000";
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 export default function Page() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [activeId, setActiveId] = useState<string>("");
@@ -59,4 +59,5 @@ export default function Page() {
       </div>
     </div>
   );
+
 }
